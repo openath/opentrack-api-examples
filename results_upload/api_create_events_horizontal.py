@@ -14,10 +14,11 @@ token = resp["access_token"]
 
 headers = {'Authorization': 'Bearer %s' % token}
 
+#Work in progress: Getting error messages as if this were a height event
 comp = {
-    "full_name": "api-test events running",
+    "full_name": "api-test events horizontal",
     "short_name": "api-test",
-    "slug": "api-test-slug-2a",
+    "slug": "api-test-slug-2b",
     "name_local": "api-test",
     "country_id": "GBR",
     "address": "Kingsmeadow, Jack Goodchild Way, Kingston Road, Kingston upon Thames, UK",
@@ -39,7 +40,7 @@ comp = {
             "date_of_birth": "1966-03-21",
             "events_entered": [
                 {
-                    "event_code": "3k", 
+                    "event_code": "JT", 
                     "event_id": "1"
                 }
             ], 
@@ -57,7 +58,7 @@ comp = {
             "date_of_birth": "1967-08-22",
             "events_entered": [
                 {
-                    "event_code": "3k", 
+                    "event_code": "JT", 
                     "event_id": "1"
                 }
             ], 
@@ -75,7 +76,7 @@ comp = {
             "date_of_birth": "1989-04-26",
             "events_entered": [
                 {
-                    "event_code": "3k", 
+                    "event_code": "JT", 
                     "event_id": "1"
                 }
             ], 
@@ -92,71 +93,69 @@ comp = {
             "age_groups": [
                 "ALL"
             ],
-            "event_id": "003",
-            "event_code": "100",
-            "name": "100 metres MEN",
+            "category": "M_ALL",
+            "event_code": "LJ", 
+            "event_id": "H3", 
             "genders": "M",
-            "category": "M",
-            "rounds": "2,1",
+            "name": "LJ M",
+            "rounds": "3",
             "units": [
                 {
-                    "status": "finished",
+                    "day": 1, 
+                    "event_id": "H3", 
+                    "event_name": "LJ M", 
                     "heat": 1,
-                    "round": 1,
-                    "results_status": "official",
                     "results": [
                         {
+                            "bib": "118", 
+                            "catpos": 1,
+                            "order": 1, 
+                            "performance": "5.74", 
                             "place": 1,
-                            "points": 0,
-                            "bib": "1",
-                            "performance": "10.37"
-                        },
+                        }, 
                         {
+                            "bib": "17", 
+                            "catpos": 2,
+                            "order": 2, 
+                            "performance": "5.72", 
                             "place": 2,
-                            "points": 0,
-                            "bib": "2",
-                            "performance": "10.48"
                         }
-                    ]
-                },
-                {
-                    "status": "finished",
-                    "heat": 2,
+                    ], 
+                    "results_status": "official", 
                     "round": 1,
-                    "results_status": "official",
-                    "results": [
+                    "rounds": 6,
+                    "status": "finished", 
+                    "trials": [
                         {
-                            "place": 1,
-                            "points": 0,
-                            "bib": "3",
-                            "performance": "10.26"
-                        }
-                    ]
-                },
-                {
-                    "status": "finished",
-                    "heat": 1,
-                    "round": 2,
-                    "results_status": "official",
-                    "results": [
+                            "bib": "118", 
+                            "result": "5.74", 
+                            "round": 1
+                        }, 
                         {
-                            "place": 1,
-                            "points": 0,
-                            "bib": "1",
-                            "performance": "10.07"
-                        },
+                            "bib": "118", 
+                            "result": "x", 
+                            "round": 2
+                        }, 
                         {
-                            "place": 2,
-                            "points": 0,
-                            "bib": "3",
-                            "performance": "10.37"
-                        },
+                            "bib": "118", 
+                            "result": "5.60", 
+                            "round": 3
+                        }, 
                         {
-                            "place": 3,
-                            "points": 0,
-                            "bib": "2",
-                            "performance": "10.47"
-                        }
+                            "bib": "17", 
+                            "result": "5.72", 
+                            "round": 1
+                        }, 
+                        {
+                            "bib": "17", 
+                            "result": "5.51", 
+                            "round": 2
+                        }, 
+                        {
+                            "bib": "17", 
+                            "result": "x", 
+                            "round": 3
+                        }, 
                     ]
                 }
             ]
@@ -175,4 +174,3 @@ r = requests.post(
 print("Created competiton with status_code %d" %  r.status_code)
 parsed = json.loads(r.text)
 print(json.dumps(parsed, indent=4, sort_keys=False))
-
