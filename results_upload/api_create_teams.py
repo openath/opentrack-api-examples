@@ -15,8 +15,22 @@ token = resp["access_token"]
 headers = {'Authorization': 'Bearer %s' % token}
 
 comp = {
-    "address": "National Closed Road Circuit, Burry Port, UK", 
-    "basic_description": "Please check with your club that you are registered prior to entering.", 
+    "full_name": "api-test events teams",
+    "short_name": "api-test",
+    "slug": "api-test-slug-4",
+    "name_local": "api-test",
+    "country_id": "GBR",
+    "address": "Kingsmeadow, Jack Goodchild Way, Kingston Road, Kingston upon Thames, UK",
+    "date": "2020-08-10",
+    "finish_date": "2020-08-15",
+    "wa_rankings_category_id": "DF",
+    "age_groups": ["ALL"],
+    "basic_description": "This is an opentrack api test",
+    "contact_details": "example@example.com",
+    "organiser_id": "6b2af700-0481-4f73-b9ae-8221ae619b55",
+    "website": "https://example.example",
+    "entry_link": "https://example.example/entry",
+    "results_link": "https://example.example/results",
     "competitors": [
         {
             "age_group": "NA", 
@@ -73,10 +87,6 @@ comp = {
             "team_id": "BEL",
         }
     ], 
-    "contact_details": "competitions@welshathletics.org", 
-    "country_id": "GBR", 
-    "date": "2020-12-12", 
-    "english_name": "West Wales RDP 3K Races", 
     "events": [
         {
             "age_groups": [
@@ -129,16 +139,7 @@ comp = {
                 }
             ]
         }
-    ], 
-    "finish_date": "2020-12-12", 
-    "full_name": "West Wales RDP 3K Races api-test-teams", 
-    "id": "7cf19ff4-c9ac-4b81-adc4-1c795a3adf20",
-    "latitude": 51.6789, 
-    "longitude": -4.2928, 
-    "organiser_id": "8ff9290c-418d-4571-a9f6-262dfab060e6", 
-    "relay_teams": [], 
-    "slug": "ww3k-api-test", 
-    "team_types": "ORG", 
+    ],
     "teams": [
         {
             "flag_url": "https://file.opentrack.run/live/clubflags/GBR/BEL.png", 
@@ -152,9 +153,7 @@ comp = {
             "team_id": "THH", 
             "team_name": "Thames Hare & Hounds"
         }
-    ], 
-    "type": "ROAD", 
-    "year": 2020
+    ]
 }
 
 r = requests.post(
