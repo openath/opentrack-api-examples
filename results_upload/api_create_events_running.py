@@ -14,7 +14,7 @@ token = resp["access_token"]
 headers = {'Authorization': 'Bearer %s' % token}
 
 comp = {
-    "full_name": "api-test events",
+    "full_name": "api-test events running",
     "short_name": "api-test",
     "slug": "api-test-slug-2a",
     "name_local": "api-test",
