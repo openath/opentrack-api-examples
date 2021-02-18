@@ -14,7 +14,6 @@ token = resp["access_token"]
 
 headers = {'Authorization': 'Bearer %s' % token}
 
-#Work in progress: Getting error messages as if this were a height event
 comp = {
     "full_name": "api-test events throw",
     "short_name": "api-test",
@@ -160,7 +159,7 @@ comp = {
                         }, 
                         {
                             "bib": "1", 
-                            "result": "x", 
+                            "result": "x",
                             "round": 6
                         }, 
                         {
@@ -175,7 +174,7 @@ comp = {
                         }, 
                         {
                             "bib": "2", 
-                            "result": "x", 
+                            "result": "x",
                             "round": 3
                         }, 
                         {

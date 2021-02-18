@@ -14,7 +14,6 @@ token = resp["access_token"]
 
 headers = {'Authorization': 'Bearer %s' % token}
 
-#Work in progress: Getting error messages as if this were a height event
 comp = {
     "full_name": "api-test events horizontal",
     "short_name": "api-test",
@@ -40,8 +39,8 @@ comp = {
             "date_of_birth": "1966-03-21",
             "events_entered": [
                 {
-                    "event_code": "JT", 
-                    "event_id": "1"
+                    "event_code": "LJ", 
+                    "event_id": "H3"
                 }
             ], 
             "first_name": "Andrew",
@@ -55,29 +54,11 @@ comp = {
             "age_group": "NA", 
             "category": "NA",
             "competitor_id": "2", 
-            "date_of_birth": "1967-08-22",
-            "events_entered": [
-                {
-                    "event_code": "JT", 
-                    "event_id": "1"
-                }
-            ], 
-            "first_name": "Andy",
-            "gender": "M", 
-            "last_name": "Weir", 
-            "nationality": "GBR",
-            "ot_athlete_id": "332b0c3e-da43-4be6-af18-20a70fb23912", 
-            "team_id": "THH"
-        },
-        {
-            "age_group": "NA", 
-            "category": "NA",
-            "competitor_id": "3", 
             "date_of_birth": "1989-04-26",
             "events_entered": [
                 {
                     "event_code": "JT", 
-                    "event_id": "1"
+                    "event_id": "H3"
                 }
             ], 
             "first_name": "Gus",
@@ -107,55 +88,55 @@ comp = {
                     "heat": 1,
                     "results": [
                         {
-                            "bib": "118", 
+                            "bib": "1", 
                             "catpos": 1,
                             "order": 1, 
                             "performance": "5.74", 
-                            "place": 1,
+                            "place": 1
                         }, 
                         {
-                            "bib": "17", 
+                            "bib": "2", 
                             "catpos": 2,
                             "order": 2, 
                             "performance": "5.72", 
-                            "place": 2,
+                            "place": 2
                         }
                     ], 
                     "results_status": "official", 
                     "round": 1,
-                    "rounds": 6,
+                    "rounds": 3,
                     "status": "finished", 
                     "trials": [
                         {
-                            "bib": "118", 
+                            "bib": "1", 
                             "result": "5.74", 
                             "round": 1
                         }, 
                         {
-                            "bib": "118", 
+                            "bib": "1", 
                             "result": "x", 
                             "round": 2
                         }, 
                         {
-                            "bib": "118", 
+                            "bib": "1", 
                             "result": "5.60", 
                             "round": 3
                         }, 
                         {
-                            "bib": "17", 
+                            "bib": "2", 
                             "result": "5.72", 
                             "round": 1
                         }, 
                         {
-                            "bib": "17", 
+                            "bib": "2", 
                             "result": "5.51", 
                             "round": 2
                         }, 
                         {
-                            "bib": "17", 
+                            "bib": "2", 
                             "result": "x", 
                             "round": 3
-                        }, 
+                        }
                     ]
                 }
             ]
