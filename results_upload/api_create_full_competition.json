@@ -41,6 +41,10 @@
                 {
                     "event_code": "4x200", 
                     "event_id": "27"
+                },
+                {
+                    "event_code": "TRI", 
+                    "event_id": "M01"
                 }
             ], 
             "first_name": "Andrew",
@@ -71,6 +75,10 @@
                 {
                     "event_code": "4x200", 
                     "event_id": "27"
+                },
+                {
+                    "event_code": "TRI", 
+                    "event_id": "M01"
                 }
             ], 
             "first_name": "Andy",
@@ -101,6 +109,10 @@
                 {
                     "event_code": "4x200", 
                     "event_id": "27"
+                },
+                {
+                    "event_code": "TRI", 
+                    "event_id": "M01"
                 }
             ], 
             "first_name": "Gus",
@@ -134,12 +146,36 @@
             "age_groups": [
                 "ALL"
             ],
+            "category": "M_ALL",
+            "event_code": "TRI", 
+            "event_id": "M01", 
+            "genders": "M",
+            "name": "Triathlon",
+            "results": [
+                {
+                    "bib": "1"
+                },
+                {
+                    "bib": "2"
+                },
+                {
+                    "bib": "3"
+                }
+            ], 
+            "rounds": "1",
+            "units": []
+        },
+        {
+            "age_groups": [
+                "ALL"
+            ],
             "event_id": "003",
             "event_code": "100",
             "name": "100 metres MEN",
             "genders": "M",
             "category": "M",
             "rounds": "2,1",
+            "parent": "M01",
             "units": [
                 {
                     "status": "finished",
@@ -286,6 +322,7 @@
             "genders": "MF",
             "name": "Javelin",
             "rounds": "1",
+            "parent": "M01",
             "units": [
                 {
                     "day": 1, 
@@ -423,6 +460,7 @@
             "name": "Pole Vault",
             "rounds": "1", 
             "status": "complete",
+            "parent": "M01",
             "units": [
                 {
                     "event_id": "F2", 
