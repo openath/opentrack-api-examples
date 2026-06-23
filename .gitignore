@@ -65,6 +65,9 @@ db.sqlite3-journal
 instance/
 .webassets-cache
 
+# Intellij stuff
+.idea/
+
 # Scrapy stuff:
 .scrapy
 
@@ -109,6 +112,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+bin/
+pyvenv.cfg
 
 # Spyder project settings
 .spyderproject
