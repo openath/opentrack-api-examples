@@ -1,5 +1,12 @@
 """
 Example script updating competitors with minimal information
+
+In this example we update the competitors id from 246 to 11111
+
+This uses a past meeting on our test server
+    https://test-data.opentrack.run/en-gb/x/2026/GBR/lac-open-2/
+To manipulate any competition, you will need to pick one that you have
+meeting director access to.
 """
 
 import requests
@@ -41,9 +48,11 @@ def run():
     competition_id = "58706d25-1289-4032-9277-020575485c39"
     headers = {"Authorization": "Token " + get_token(), "Referer": BASE_URL}
     competitors = get_competitors(competition_id, headers)
+
+    # Only Competition is required, since the competitor's url uses a different id. This one represents a bib number.
     data = {
         "competition": competition_id,
-        "competitor_id": "11111",
+        "competitor_id": "11111", # previously 246
     }
     resp = requests.patch(
         competitors[0]['url'],
