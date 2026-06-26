@@ -1,6 +1,5 @@
 """
-Example script which lists events in a competition, modified one, creates
-and optionally deletes one.
+Example script which lists events in a competition, modified one, deletes it, then re-creates it.
 
 This uses a past meeting on our test server
     https://test-data.opentrack.run/en-gb/x/2026/GBR/lac-open-2/
@@ -35,57 +34,43 @@ def get_token():
 
 
 
-def get_events(comp_id, headers):
-    # Get list of EventSpec records in competition.
-    resp = requests.get(
-        BASE_URL + 'api/events/', 
-        params={'competition': comp_id},
-        headers=headers
-    )
-    if resp.status_code == 200:
-        return resp.json()["results"]
-    else:
-        print(f"An error occurred, response status code {resp.status_code}")
-        return []
-
-
 def run():
     comp_id = "58706d25-1289-4032-9277-020575485c39"
-
-
     headers = {"Authorization": "Token " + get_token(), "Referer": BASE_URL}
-    events = get_events(comp_id, headers)
 
-    print("Listing events in competition:")
-    for ev in events:
-        print(f"  Event {ev['event_id']} is of type {ev['event_code']} and starts at {ev['r1_time']}")
+    # Get
+    resp = requests.get(EVENTS_URL + f"?competition={comp_id}", headers=headers)
+    if resp.status_code != 200:
+        raise ValueError("Status code not 200")
+    original_event = resp.json()['results'][0]
 
-    # delay start of everything by an hour. Times are always text in format hh:mm
-    # this would not work past midnight, but it's just a demo
-    for ev in events:
-        ev_id = ev["id"]
-        start_time = ev["r1_time"]
-        if start_time:
-            hrs, mins = start_time.split(":")
-            new_start_time = str(int(hrs) + 1) + ":" + mins
+    # Update
+    ev_id = original_event['id']
+    event_url = f"{EVENTS_URL}{ev_id}/"
+    payload = dict(
+        competition=original_event['competition'],
+        event_id=original_event['event_id'],
+        event_code=original_event['event_code'],
+        category="V50", # this is the only actual change, the other fields are just required.
+    )
+    print(f" PUT to {event_url}")
+    resp = requests.put(event_url, json=payload, headers=headers)
+    if resp.status_code != 200:
+        raise ValueError("Status code not 200")
 
+    # Delete
+    print(f" DELETE to {event_url}")
+    resp = requests.delete(event_url, headers=headers)
+    if resp.status_code != 204:
+        raise ValueError("Status code not 204")
 
-            event_url = f"{BASE_URL}api/events/{ev_id}/"
+    # Create
+    print(f" POST to {EVENTS_URL}")
+    original_event['parent'] = ''
+    resp = requests.post(EVENTS_URL, json=original_event, headers=headers)
+    if resp.status_code != 201:
+        raise ValueError("Status code not 201")
 
-            payload = dict(
-                competition=comp_id,
-                event_id=ev["event_id"],
-                event_code=ev["event_code"],
-                r1_time=new_start_time
-                )
-            resp = requests.put(event_url, json=payload, headers=headers)
-            print(f" POST to {event_url}")
-            if resp.status_code == 200:
-                print(f"    Updated start time of {ev['event_id']} to be {new_start_time}")
-            else:
-                print(resp.status_code)
-                pprint(resp.json())
-                return
 
 if __name__ == '__main__':
     run()
